@@ -13,4 +13,3 @@ class Editor(Emitter):
     @text.setter
     def text(self, value):
         self._text = value
-
