@@ -2,6 +2,7 @@ import platform
 
 from tkinter import Tk, BOTH
 from tkinter.scrolledtext import ScrolledText
+from tkinter.filedialog import askopenfilename, asksaveasfilename
 
 from editor import Editor
 from .main_menu import AppMenu, ContextMenu
@@ -38,9 +39,18 @@ class CornHubEditWindow(Tk):
     def _on_close(self):
         self.destroy()
 
+    def open(self):
+        self.editor.open_file(askopenfilename())
+
+    def save(self, save_as=False):
+        if not save_as and self.editor.path is not None and self.editor.path != "":
+            self.editor.save_file()
+        else:
+            self.editor.save_as_file(asksaveasfilename())
+
     def attach_listeners(self):
-        self.menu.on("exit", self.editor.close_editor)
         self.menu.on("new", self.editor.new_file)
-        self.menu.on("open", self.editor.open_file)
-        self.menu.on("save", self.editor.save_file)
-        self.menu.on("save_as", self.editor.save_as_file)
+        self.menu.on("open", self.open)
+        self.menu.on("save", self.save)
+        self.menu.on("save_as", lambda: self.save(True))
+        self.menu.on("exit", self.editor.close_editor)
