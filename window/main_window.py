@@ -26,6 +26,13 @@ class CornHubEditWindow(Tk):
             pass
 
         self.config(menu=self.menu)
+        self.editor = editor
+
+        editor.on("change", self._on_change)
+
+    def _on_change(self):
+        self.text_area.delete(1.0, "end")
+        self.text_area.insert(1.0, self.editor.text)
 
     def _on_close(self):
         self.destroy()
