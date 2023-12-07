@@ -2,6 +2,7 @@ import threading
 from time import sleep
 
 from utils.action_emitter import Emitter
+from utils.snippets import SNIPPETS
 
 
 class Editor(Emitter):
@@ -77,9 +78,5 @@ class Editor(Emitter):
     def stop_autosave(self):
         self.autosave_on = False
 
-    def email_snippet(self):
-        self.text = "Sehr geehrter Herr/Frau," \
-                    "\n\n" \
-                    "[Text hier einfügen]" \
-                    "\n\n" \
-                    "Mit freundlichen Grüßen"
+    def load_snippet(self, name):
+        self.text = SNIPPETS[name]
