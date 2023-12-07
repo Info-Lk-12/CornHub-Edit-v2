@@ -43,6 +43,7 @@ class CornHubEditWindow(Tk):
         self.editor.open_file(askopenfilename())
 
     def save(self, save_as=False):
+        self.editor.text = self.text_area.get(1.0, "end")
         if not save_as and self.editor.path is not None and self.editor.path != "":
             self.editor.save_file()
         else:

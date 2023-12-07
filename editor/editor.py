@@ -67,7 +67,8 @@ class Editor(Emitter):
     def autosave(self, interval):
         self.autosave_on = True
         while self.autosave_on:
-            self.save()
+            if self.path is not None and self.path != "":
+                self.save_file()
             sleep(interval)
 
     def start_autosave(self, interval):
