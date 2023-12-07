@@ -26,9 +26,16 @@ class Editor(Emitter):
         except FileNotFoundError:
             print(f"File not found: {file_path}")
 
-    def save_file(self, file_path):
+    def save_as_file(self, file_path):
         try:
             with open(file_path, 'w') as file:
+                file.write(self.text)
+        except Exception as e:
+            print(f"Error saving file: {e}")
+
+     def save_file(self):
+        try:
+            with open(self.path, 'w') as file:
                 file.write(self.text)
         except Exception as e:
             print(f"Error saving file: {e}")
