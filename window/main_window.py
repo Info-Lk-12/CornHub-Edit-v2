@@ -40,14 +40,18 @@ class CornHubEditWindow(Tk):
         self.destroy()
 
     def open(self):
-        self.editor.open_file(askopenfilename())
+        file_path = askopenfilename()
+        if file_path is not None and file_path != "":
+            self.editor.open_file(file_path)
 
     def save(self, save_as=False):
         self.editor.text = self.text_area.get(1.0, "end")
         if not save_as and self.editor.path is not None and self.editor.path != "":
             self.editor.save_file()
         else:
-            self.editor.save_as_file(asksaveasfilename())
+            file_path = asksaveasfilename()
+            if file_path is not None and file_path != "":
+                self.editor.save_as_file(file_path)
 
     def attach_listeners(self):
         self.bind('<Control-s>', lambda e: self.save)
