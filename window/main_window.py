@@ -50,6 +50,8 @@ class CornHubEditWindow(Tk):
             self.editor.save_as_file(asksaveasfilename())
 
     def attach_listeners(self):
+        self.bind('<Control-s>', lambda e: self.save)
+
         self.menu.on("new", self.editor.new_file)
         self.menu.on("open", self.open)
         self.menu.on("save", self.save)
