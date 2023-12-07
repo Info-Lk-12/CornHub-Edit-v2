@@ -75,3 +75,10 @@ class Editor(Emitter):
 
     def stop_autosave(self):
         self.autosave_on = False
+
+    def email_snippet(self):
+        self.text = "Sehr geehrter Herr/Frau," \
+                    "\n\n" \
+                    "[Text hier einfügen]" \
+                    "\n\n" \
+                    "Mit freundlichen Grüßen"

@@ -54,3 +54,5 @@ class CornHubEditWindow(Tk):
         self.menu.on("save", self.save)
         self.menu.on("save_as", lambda: self.save(True))
         self.menu.on("exit", self.editor.close_editor)
+
+        self.menu.on("email", self.editor.email_snippet)
