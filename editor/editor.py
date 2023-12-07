@@ -45,4 +45,7 @@ class Editor(Emitter):
     def paste_text(self, start):
         self.text = self.text[:start] + self.clipboard + self.text[start:]
 
+    def close_editor(self):
+        exit()
+
 

@@ -27,6 +27,7 @@ class CornHubEditWindow(Tk):
 
         self.config(menu=self.menu)
         self.editor = editor
+        self.attach_listeners()
 
         editor.on("change", self._on_change)
 
@@ -36,3 +37,7 @@ class CornHubEditWindow(Tk):
 
     def _on_close(self):
         self.destroy()
+
+
+    def attach_listeners(self):
+        self.menu.on("exit", self.editor.close_editor)
