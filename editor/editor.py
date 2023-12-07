@@ -40,8 +40,8 @@ class Editor(Emitter):
             print(f"Error saving file: {e}")
 
     def save_file(self):
-        if self.path == None:
-            raise Error('Document not found')
+        if self.path is None or self.path == "":
+            raise Exception('Document not found')
         else:
             try:
                 with open(self.path, 'w') as file:
@@ -63,8 +63,6 @@ class Editor(Emitter):
 
     def close_editor(self):
         exit()
-
-
 
     def autosave(self, interval):
         self.autosave_on = True

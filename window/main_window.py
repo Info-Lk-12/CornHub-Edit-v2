@@ -38,7 +38,6 @@ class CornHubEditWindow(Tk):
     def _on_close(self):
         self.destroy()
 
-
     def attach_listeners(self):
         self.menu.on("exit", self.editor.close_editor)
         self.menu.on("new", self.editor.new_file)
