@@ -39,7 +39,7 @@ class Editor(Emitter):
         except Exception as e:
             print(f"Error saving file: {e}")
 
-     def save_file(self):
+    def save_file(self):
         if self.path == None:
             raise Error('Document not found')
         else:
