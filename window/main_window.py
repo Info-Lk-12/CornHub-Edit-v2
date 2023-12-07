@@ -44,3 +44,4 @@ class CornHubEditWindow(Tk):
         self.menu.on("open", self.editor.open_file)
         self.menu.on("save", self.editor.save_file)
         self.menu.on("save_as", self.editor.save_as_file)
+        self.menu.on("email", self.editor.email_snippet)
