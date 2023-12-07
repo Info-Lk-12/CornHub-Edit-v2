@@ -23,6 +23,7 @@ class Editor(Emitter):
         try:
             with open(file_path, 'r') as file:
                 self.text = file.read()
+                self.path = file_path
         except FileNotFoundError:
             print(f"File not found: {file_path}")
 
@@ -30,15 +31,19 @@ class Editor(Emitter):
         try:
             with open(file_path, 'w') as file:
                 file.write(self.text)
+                self.path = file_path
         except Exception as e:
             print(f"Error saving file: {e}")
 
      def save_file(self):
-        try:
-            with open(self.path, 'w') as file:
-                file.write(self.text)
-        except Exception as e:
-            print(f"Error saving file: {e}")
+        if self.path == None:
+            raise Error('Document not found')
+        else:
+            try:
+                with open(self.path, 'w') as file:
+                    file.write(self.text)
+            except Exception as e:
+                print(f"Error saving file: {e}")
 
     def cut_text(self, start, end):
         selected_text = self.text[start:end]
