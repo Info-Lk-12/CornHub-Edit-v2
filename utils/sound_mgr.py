@@ -1,14 +1,11 @@
 import platform
 import threading
-
-if platform.system() == "Windows":
-    from winsound import PlaySound, SND_FILENAME
+from playsound import playsound
 
 
 def play_a_sound(*sound):
-    def play_win():
+    def play():
         for s in sound:
-            PlaySound(s, SND_FILENAME)
+            playsound(s)
 
-    if platform.system() == "Windows":
-        threading.Thread(target=play_win, daemon=False).start()
+    threading.Thread(target=play, daemon=False).start()

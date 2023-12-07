@@ -80,3 +80,5 @@ class Editor(Emitter):
 
     def load_snippet(self, name):
         self.text = SNIPPETS[name]
+
+
