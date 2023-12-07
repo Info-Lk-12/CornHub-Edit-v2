@@ -40,7 +40,6 @@ class AppMenu(EmitterMenu):
 
         file_menu = BasicMenu(self)
         file_menu.attach_listener(self._emit)
-
         file_menu.add_btn('new', 'New File')
         file_menu.add_btn('open', 'Open')
         file_menu.add_btn('save', 'Save')
@@ -48,11 +47,17 @@ class AppMenu(EmitterMenu):
         file_menu.add_btn('exit', 'Exit')
 
         snippets_menu = BasicMenu(self)
-        snippets_menu.add_btn('email', 'E-Mail')
         snippets_menu.attach_listener(self._emit)
+        snippets_menu.add_btn('email', 'E-Mail')
+
+        options_menu = BasicMenu(self)
+        options_menu.attach_listener(self._emit)
+        options_menu.add_btn('enable_autosave', 'Enable Autosave')
+        options_menu.add_btn('disable_autosave', 'Disable Autosave')
 
         self.add_cascade(label="File", menu=file_menu)
         self.add_cascade(label="Snippets", menu=snippets_menu)
+        self.add_cascade(label="Options", menu=options_menu)
 
 
 class ContextMenu(EmitterMenu):
