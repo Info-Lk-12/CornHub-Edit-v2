@@ -52,8 +52,9 @@ class Editor(Emitter):
 
     def cut_text(self, start, end):
         selected_text = self.text[start:end]
-        self.clipboard = selected_text
         self.text = self.text[:start] + self.text[end:]
+
+        return selected_text
 
     def copy_text(self, start, end):
         selected_text = self.text[start:end]
