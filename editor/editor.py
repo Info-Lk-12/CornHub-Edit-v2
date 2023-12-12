@@ -23,6 +23,7 @@ class Editor(Emitter):
 
     def new_file(self):
         self.text = ""
+        self.path = None
 
     def open_file(self, file_path):
         try:
@@ -67,13 +68,13 @@ class Editor(Emitter):
         exit()
 
     def autosave(self, interval):
-        self.autosave_on = True
         while self.autosave_on:
             if self.path is not None and self.path != "":
                 self.save_file()
             sleep(interval)
 
     def start_autosave(self, interval):
+        self.autosave_on = True
         threading.Thread(target=self.autosave, args=(interval,), daemon=True).start()
 
     def stop_autosave(self):

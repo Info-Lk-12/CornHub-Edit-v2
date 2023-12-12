@@ -45,7 +45,7 @@ class CornHubEditWindow(Tk):
 
     def open(self):
         file_path = askopenfilename()
-        if file_path is not None and file_path != "":
+        if file_path is not None and file_path != "" and type(file_path) is not tuple:
             self.editor.open_file(file_path)
 
     def save(self, save_as=False):
@@ -54,7 +54,7 @@ class CornHubEditWindow(Tk):
             self.editor.save_file()
         else:
             file_path = asksaveasfilename()
-            if file_path is not None and file_path != "":
+            if file_path is not None and file_path != "" and type(file_path) is not tuple:
                 self.editor.save_as_file(file_path)
 
     def select_all(self, *e):
